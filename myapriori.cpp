@@ -26,7 +26,8 @@ using std::deque; using std::vector; using std::string;
 //Function Prototypes
 //========================================================================
 void read_file(char*, deque<vector<bool>>&, deque<vector<int>>&);
-void print_item_set(const deque<vector<int>>&);
+void print_int_set(const deque<vector<int>>&);
+void print_bool_set(const deque<vector<bool>>&);
 //========================================================================
 
 
@@ -44,8 +45,11 @@ int main(int argc, char** argv){
 	deque<vector<int>> int_item_sets;
 	read_file(argv[1], bool_item_sets, int_item_sets);
 
-	print_item_set(int_item_sets);
+	print_int_set(int_item_sets);
 
+	std::cout << '\n';
+
+	print_bool_set(bool_item_sets);
 
 
 
@@ -107,25 +111,12 @@ void read_file(char* file_name, deque<vector<bool>>& bool_item_sets, deque<vecto
 	}
 
 
-	for(const vector<bool> v : bool_item_sets){
-		for(int i = 0; i < v.size(); ++i){
-			if(v[i]){
-				std::cout << 1 << " ";
-			}else{
-				std::cout << 0 << " ";
-			}
-		}
-		std::cout << '\n';
-		for(int i = 0 ; i < v.size(); ++i){
-			std::cout << i << " ";
-		}
-		std::cout << '\n';
-	}
+	
 
 	in_file.close();
 }
 
-void print_item_set(const deque<vector<int>>& item_sets){
+void print_int_set(const deque<vector<int>>& item_sets){
 	for(const vector<int>& v : item_sets){
 		for(int item : v){
 			std::cout << item << " ";
@@ -133,4 +124,37 @@ void print_item_set(const deque<vector<int>>& item_sets){
 		std::cout << '\n';
 	}
 }
+
+void print_bool_set(const deque<vector<bool>>& item_sets){
+	for(const vector<bool> v : item_sets){
+		for(int i = 0; i < v.size(); ++i){
+			std::cout << "=";
+		}
+
+		std::cout << '\n';
+
+		for(int i = 0; i < v.size(); ++i){
+			if(v[i]){
+				std::cout << 1 << " ";
+			}else{
+				std::cout << 0 << " ";
+			}
+		}
+
+		std::cout << '\n';
+
+		for(int i = 0 ; i < v.size(); ++i){
+			std::cout << i << " ";
+		}
+
+		std::cout << '\n';
+
+		for(int i = 0; i < v.size(); ++i){
+			std::cout << "=";
+		}
+
+		std::cout << '\n';
+	}
+}
+
 //========================================================================
