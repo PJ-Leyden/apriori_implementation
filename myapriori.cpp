@@ -20,6 +20,7 @@ Notes:
 #include <vector>
 #include <list>
 #include <algorithm>
+#include <cmath>
 
 using std::deque; using std::vector; using std::string;
 
@@ -28,6 +29,7 @@ using std::deque; using std::vector; using std::string;
 void read_file(char*, deque<vector<bool>>&, deque<vector<int>>&);
 void print_int_set(const deque<vector<int>>&);
 void print_bool_set(const deque<vector<bool>>&);
+deque<vector<int>> apriori_alg(const deque<vector<bool>>&, double);
 //========================================================================
 
 /*
@@ -46,25 +48,32 @@ int main(int argc, char** argv){
 		exit(1);
 	}
 
-	double min_support = argv[2][0] - '0';
+	//Get Min Support
+	int len = 0;
+	double min_support = 0;
+	for(int i = 0; argv[2][i] != '\0'; ++i){
+		++len;
+	}
+	for(int i = 0; argv[2][i] != '\0'; ++i){
+		min_support += ((argv[2][i] - '0') * pow(10, len - i - 1));
+	}
 
+	//Print
 	std::cout << "Min Support: " << min_support << '\n';
 
+	//Create Data Sets
 	deque<vector<bool>> bool_item_sets;
 	deque<vector<int>> int_item_sets;
 	read_file(argv[1], bool_item_sets, int_item_sets);
 
-	print_int_set(int_item_sets);
+	//Calculate frequent item sets
+	deque<vector<int>> frequent_sets = apriori_alg(bool_item_sets, min_support);
 
-	std::cout << '\n';
-
-	print_bool_set(bool_item_sets);
-
-	
-
-
-
-
+	//print results
+	std::cout << "Frequent Item Sets\n";
+	std::cout << "=======================================\n";
+	print_int_set(frequent_sets);
+	std::cout << "=======================================\n";
 
 	return 0;
 }
@@ -164,5 +173,16 @@ void print_bool_set(const deque<vector<bool>>& item_sets){
 
 		std::cout << '\n';
 	}
+}
+
+deque<vector<int>> apriori_alg(const deque<vector<bool>>& item_sets, double frequency){
+	/*
+	while(more candiate sets or frequent sets){
+		generate next candidate set with set length k+1
+		check candidates against item sets
+		add the frequent to a running set of frequent sets...
+		repeat with latests sets
+	}
+	*/
 }
 //========================================================================
