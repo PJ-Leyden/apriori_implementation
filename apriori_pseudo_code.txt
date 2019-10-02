@@ -1,0 +1,16 @@
+File: apriori_pseudo_code.txt
+Author: P.J. Leyden
+Date: October 1st, 2019
+
+Apriori
+
+Let ck represent the series of subsequent candidate sets where k = length of the contained candidate sets.
+Let fk represent the series of subsequent frequent sets where k = length of the contained candidate sets. 
+Let 'sets' represent the set of all itemsets
+
+for each set in sets
+	for each item in set
+		if item is unique
+			add to c1
+
+
