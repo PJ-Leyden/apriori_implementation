@@ -30,6 +30,11 @@ void print_int_set(const deque<vector<int>>&);
 void print_bool_set(const deque<vector<bool>>&);
 //========================================================================
 
+/*
+struct item_set{
+	std::vector set;
+};
+*/
 
 //main function
 //========================================================================
@@ -41,6 +46,10 @@ int main(int argc, char** argv){
 		exit(1);
 	}
 
+	double min_support = argv[2][0] - '0';
+
+	std::cout << "Min Support: " << min_support << '\n';
+
 	deque<vector<bool>> bool_item_sets;
 	deque<vector<int>> int_item_sets;
 	read_file(argv[1], bool_item_sets, int_item_sets);
@@ -51,7 +60,7 @@ int main(int argc, char** argv){
 
 	print_bool_set(bool_item_sets);
 
-
+	
 
 
 
@@ -156,5 +165,4 @@ void print_bool_set(const deque<vector<bool>>& item_sets){
 		std::cout << '\n';
 	}
 }
-
 //========================================================================
