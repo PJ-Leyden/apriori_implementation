@@ -8,9 +8,26 @@ Let ck represent the series of subsequent candidate sets where k = length of the
 Let fk represent the series of subsequent frequent sets where k = length of the contained candidate sets. 
 Let 'sets' represent the set of all itemsets
 
+//Generate the initial candidate set
 for each set in sets
 	for each item in set
 		if item is unique
 			add to c1
+
+
+//iterate through the candidate set and check for frequency against database
+for c1_itr = c1.begin; cl_itr != c1.end; ++c1_itr
+	count = 0
+	for each set in sets
+		i1 = c1_itr->begin
+		i2 = set.begin
+		while i2 != set.end AND i1 != cl_itr->end
+			if(i1 == i2)
+				++i1
+			++i2
+		if i1 == cl_itr->end
+			count++
+
+
 
 
