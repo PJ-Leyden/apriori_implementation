@@ -28,7 +28,6 @@ for cur_szie = 1; cur_size <= max; ++cur_size
 
 	//iterate through the candidate set and check for frequency against database
 	for ck_itr = ck.begin; ck_itr != ck.end; ++ck_itr
-		count = 0
 		for each set in sets
 			i1 = ck_itr->begin
 			i2 = set.begin
