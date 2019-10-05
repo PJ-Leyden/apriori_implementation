@@ -191,8 +191,6 @@ deque<vector<int>> generate_next_candidate_set(const deque<vector<int>>& prev_fr
 				//std::cerr << "\n";
 
 				for(vector<int>::iterator itr = clone.begin(); itr != clone.end(); ++itr){
-					std::cerr << "ELE[0]: " << ele[0] << '\n';
-					std::cerr << "*itr: " << *itr << '\n';
 					if(ele[0] < *itr || itr == clone.end() - 1){
 						if(itr == clone.end() - 1 && !(ele[0] < *itr)){
 							clone.push_back(ele[0]);
